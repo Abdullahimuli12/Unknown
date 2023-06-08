@@ -1,120 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Google</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://example.com/path/to/your/wallpaper.jpg'); /* Update with the URL of your wallpaper image */
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-    }
-    
-    #container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 150px;
-    }
-    
-    #logo {
-      margin-bottom: 20px;
-    }
-    
-    #search {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      padding: 10px;
-      width: 500px;
-      max-width: 100%;
-      background-color: #fff;
-      border-radius: 24px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    #search input[type="text"] {
-      flex: 1;
-      border: none;
-      padding: 5px;
-      font-size: 16px;
-      outline: none;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>language translator</title>
+    <link rel="stylesheet" href="style.css">
 
-    #nav-bar {
-      display: flex;
-      justify-content: space-between;
-      background-color: #f2f2f2;
-      padding: 10px 20px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+    <script src="https://kit.fontawesome.com/657de39a82.js" crossorigin="anonymous"></script>
 
-    .folder {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 5px 10px;
-      border-radius: 20px;
-      background-color: #f8f9fa;
-      color: #70757a;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .folder:hover {
-      background-color: #e6e6e6;
-    }
-  </style>
 </head>
 <body>
-  <!-- Google homepage content -->
-  <div id="nav-bar">
-    <div class="folder" onclick="window.location.href = 'https://mail.google.com'">Gmail</div>
-    <div class="folder" onclick="window.location.href = 'https://www.google.com/imghp'">Main Google</div>
-    <div class="folder" onclick="window.location.href = 'https://www.google.com/intl/en/about/products'">Apps</div>
-    <div class="folder" onclick="window.location.href = 'https://www.google.com/notifications'">Notifications</div>
-    <div class="folder" onclick="window.location.href = 'https://myaccount.google.com'">Account</div>
-    <div class="folder" onclick="changeWallpaper()">Change Wallpaper</div>
-  </div>
-  
-  <div id="container">
-    <img id="logo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
-    <form id="search" action="https://www.google.com/search" method="GET">
-      <input type="text" name="q" autofocus placeholder="Search Google or Type a URL">
-    </form>
-  </div>
-  
-  <script>
-    // Add JavaScript code to handle form submission
-    const form = document.getElementById("search");
-    const input = document.querySelector('input[name="q"]');
-    
-    form.addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent the default form submission
-      
-      const searchValue = input.value.toLowerCase();
-      
-      if (searchValue === "google") {
-        window.location.href = "https://www.google.com"; // Redirect to Google homepage
-      } else if (searchValue === "youtube") {
-        window.location.href = "https://www.youtube.com"; // Redirect to YouTube homepage
-      } else {
-        form.action = "https://www.google.com/search"; // Change the form action to perform a Google search
-        form.submit(); // Submit the form to show search results
-      }
-    });
 
-    function changeWallpaper() {
-      const imageUrl = prompt("Enter the URL of the new wallpaper image:");
-      if (imageUrl) {
-        document.body.style.backgroundImage = `url('${imageUrl}')`;
-      }
-    }
-  </script>
+    <div class="container">
+        <ul class="controls">
+            <li class="row from">
+                <div class="icons">
+                    <i class="fas fa-volume-up" id="from"></i>
+                    <i class="fas fa-copy" id="from"></i>
+                </div>
+
+                <select ></select>
+
+            </li>
+
+            <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+            <li class="row to">
+            <select></select>
+
+            <div class="icons">
+                <i class="fas fa-volume-up" id="to"></i>
+                <i class="fas fa-copy" id="to"></i>
+            </div>
+        </li>
+        </ul>
+        <div class="wrapper">
+            <div class="text-input">
+                <textarea spellcheck="false" class="from-text" placeholder="Enter text"></textarea>
+                <textarea spellcheck="false" class="to-text" readonly disabled placeholder="Translation"></textarea>
+            </div>
+            
+        </div>
+        <button>Translate Text</button>
+    </div>
+
+    <script src="countries.js"></script>
+
+    <script src="script.js"></script>
+    
 </body>
 </html>
